@@ -27,7 +27,9 @@ if submitted:
         st.stop()
 
     with st.spinner("音声を出力中です..."):
-        POST_URL = "https://vits.finetuning.ngrok.app/audio"
+        KEY = st.secrets.ApiKey.key
+        ENDPOINT = st.secrets.ApiKey.endpoint
+
         # リクエストボディを定義する
         API_KEY = os.environ.get("API_KEY ")
         request_body = {"text": text, "character": character}
@@ -35,7 +37,7 @@ if submitted:
                    'Content-Type': 'application/json', "X-API-Key": API_KEY}
         # POSTリクエストを、リクエストボディ付きで送信する
         # ここでflaskのエンドポイントにアクセス、returnを受け取る
-        response = requests.post(POST_URL, json=request_body, headers=headers)
+        response = requests.post(ENDPOINT, json=request_body, headers=headers)
 
         # receive audio_binary and revert it into np.array
         data = response.json()
