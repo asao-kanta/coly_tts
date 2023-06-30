@@ -31,10 +31,9 @@ if submitted:
         ENDPOINT = st.secrets["endpoint"]
 
         # リクエストボディを定義する
-        API_KEY = os.environ.get("API_KEY ")
         request_body = {"text": text, "character": character}
         headers = {'Accept': 'application/json',
-                   'Content-Type': 'application/json', "X-API-Key": API_KEY}
+                   'Content-Type': 'application/json', "X-API-Key": KEY}
         # POSTリクエストを、リクエストボディ付きで送信する
         # ここでflaskのエンドポイントにアクセス、returnを受け取る
         response = requests.post(ENDPOINT, json=request_body, headers=headers)
