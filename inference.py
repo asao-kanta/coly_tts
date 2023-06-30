@@ -27,8 +27,8 @@ if submitted:
         st.stop()
 
     with st.spinner("音声を出力中です..."):
-        KEY = st.secrets.ApiKey.key
-        ENDPOINT = st.secrets.ApiKey.endpoint
+        KEY = st.secrets["key"]
+        ENDPOINT = st.secrets["endpoint"]
 
         # リクエストボディを定義する
         API_KEY = os.environ.get("API_KEY ")
